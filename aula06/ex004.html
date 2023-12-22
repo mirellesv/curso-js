@@ -13,8 +13,9 @@
 <body>
     <script>
         var nome = window.prompt('Insira o seu nome: ')
-        document.writeln(`Olá ${nome}!, seu nome tem ${nome.length} letras`)
-        document.writeln(`Seu nome em maiúsculas é ${nome.toUpperCase}`)
+        document.write(`Olá <strong>${nome}</strong>! Seu nome tem ${nome.length} letras.<br/>`)
+        document.write(`Seu nome em maiúsculas é ${nome.toUpperCase()}.<br/>`)
+        document.write(`Seu nome em minúsculas é ${nome.toLowerCase()}.`)
     </script>
 </body>
 </html>
