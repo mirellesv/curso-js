@@ -15,17 +15,12 @@
 <body>
     <h1>Iniciando estudo com DOM</h1>
     <p>Aqui vai o resultado</p>
-    <p>Aprendendo a usar o <strong>DOM</strong> em JavaScript.</p>
+    <p id = 'par'>Aprendendo a usar o <strong>DOM</strong> em JavaScript.</p>
     <div id="msg">Clique em mim</div>
     <script>
-        /*
-        //d.innerText = "Estou aguardando..."
-        window.document.getElementById("msg").innerText = "Hello, world!"
-        */
-       var d = window.document.querySelector("div#msg")
-       d.innerText = 'To aprendendo DOM!'
-       d.style.color = "yellow"
-       d.style.background = "black"
+        var d = window.document.querySelector('p#par')
+
+        window.document.write(d.innerHTML)
     </script>
 </body>
 </html>
