@@ -7,9 +7,9 @@
 </head>
 <body>
     <h1>Calculando a idade...</h1>
-    <input type="text" name = "txt_nome" id ="txt_nome">
-    <input type="number" name = "txt_ano_nasc" id = "txt_ano_nasc">
-    <input type="number" name = "txt_ano_atual" id = "txt_ano_atual">
+    Nome: <input type="text" name = "txt_nome" id ="txt_nome">
+    Ano de nascimento: <input type="number" name = "txt_ano_nasc" id = "txt_ano_nasc">
+    Ano atual: <input type="number" name = "txt_ano_atual" id = "txt_ano_atual">
     <input type="button" value = "Calcular" onclick="calcular_idade()">
     <script>
         function calcular_idade(){
@@ -23,7 +23,7 @@
 
             var idade = ano_atual - ano_nasc
 
-            document.write(`Olá ${nome}! Você tem ${idade} anos!.`)
+            document.write(`Olá ${nome}! Você tem ${idade} anos!`)
         }
     </script>
 </body>
