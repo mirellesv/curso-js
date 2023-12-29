@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descobrindo a idade</title>
+</head>
+<body>
+    <h1>Calculando a idade...</h1>
+    <input type="text" name = "txt_nome" id ="txt_nome">
+    <input type="number" name = "txt_ano_nasc" id = "txt_ano_nasc">
+    <input type="number" name = "txt_ano_atual" id = "txt_ano_atual">
+    <input type="button" value = "Calcular" onclick="calcular_idade()">
+    <script>
+        function calcular_idade(){
+            var nome = document.getElementById("txt_nome")
+            var text_ano_nasc = document.getElementById("txt_ano_nasc")
+            var texto_ano_atual = document.getElementById("txt_ano_atual")
+
+            var nome = nome.value
+            var ano_nasc = Number(txt_ano_nasc.value)
+            var ano_atual = Number(txt_ano_atual.value)
+
+            var idade = ano_atual - ano_nasc
+
+            document.write(`Olá ${nome}! Você tem ${idade} anos!.`)
+        }
+    </script>
+</body>
+</html>
