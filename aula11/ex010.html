@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Multas</title>
+</head>
+<body>
+    <h1>Sistema de multas</h1>
+
+    Velocidade do carro (km/h) = <input type="number" name="txtvel" id="txtvel">
+    <input type="button" value="Verificar" onclick="verificar()">
+    <div id = "res">
+
+    </div>
+
+    <script>
+        function verificar(){
+            var velocidade_txt = document.querySelector('input#txtvel')
+            var res = document.querySelector('div#res')
+
+            var velocidade = Number(velocidade_txt.value)
+
+            res.innerHTML = `<p> Sua velocidade atual é de ${velocidade} km/h. </p>`
+
+            if (velocidade > 60) {
+                res.innerHTML += `<p> Velocidade superior a 60 km/h! Você foi <strong>MULTADO</strong>! </p>`
+            }
+
+            res.innerHTML += `<p> Por favor, dirija  sempre com responsabilidade e cuidado! </p> `
+        }
+    </script>
+</body>
+</html>
