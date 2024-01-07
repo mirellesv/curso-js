@@ -1,5 +1,5 @@
-var incremento = 3
+var incremento = 1
 
-for(var i = 1; i <= 10; i = i + incremento){
+for(var i = 10; i >= 1; i = i - incremento){
     console.log(i)
 }

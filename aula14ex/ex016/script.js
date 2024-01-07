@@ -10,24 +10,24 @@ function contar(){
 
     if(txtinicio.value.length == 0 || txtfim.value.length == 0 || txtpasso.value.length == 0){
         res.innerHTML = 'Impossível contar!'
-    }else if(txtpasso.value == 0){
-        window.alert('Passo inválido! Considerado PASSO 1')
-
-        passo = 1
-        res.innerHTML = ''
-
-        for (var i = inicio; i <= fim; i = i + passo){
-            res.innerHTML += i + '&#x1F449;'
-        }
-        
-        res.innerHTML += '&#x1F3F3;&#xFE0F;'
     }else{
         res.innerHTML = ''
-
-        for (var i = inicio; i <= fim; i = i + passo){
-            res.innerHTML += i + '&#x1F449;'
+        
+        if(passo == 0){
+            window.alert('Passo inválido! Considerado PASSO 1')
+            passo = 1
         }
         
-        res.innerHTML += '&#x1F3F3;&#xFE0F;'
+        if(inicio < fim){
+            for (var i = inicio; i <= fim; i = i + passo){
+                res.innerHTML += i + '&#x1F449;'
+            }
+        }else{
+            for (var i = inicio; i >= fim; i = i - passo){
+                res.innerHTML += i + '&#x1F449;'
+            }
+        }
+        
+        res.innerHTML +=  `\u{1F3C1}`
     }
 }
