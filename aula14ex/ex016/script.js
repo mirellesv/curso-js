@@ -14,12 +14,17 @@ function contar(){
         window.alert('Passo inválido! Considerado PASSO 1')
 
         res.innerHTML = ''
+
+        passo = 1
         
-        for(var cont = inicio; cont <= fim; cont = cont + passo){
-            res.innerHTML += cont + '&#x1F449;'
+        for(var c = inicio; c <= fim; c = c + passo){
+            res.innerHTML += c + '&#x1F449;'
         }
         res.innerHTML += '&#x1F3F3;&#xFE0F;'
     }else{
+
+        res.innerHTML = ''
+
         for(var cont = inicio; cont <= fim; cont = cont + passo){
             res.innerHTML += cont + '&#x1F449;'
         }
