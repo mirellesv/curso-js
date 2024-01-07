@@ -4,30 +4,30 @@ function contar(){
     var txtpasso = window.document.querySelector('input#txtpasso')
     var res = window.document.querySelector('div#res')
 
-    var inicio = txtinicio.value
-    var fim = txtfim.value
-    var passo = txtpasso.value
+    var inicio = Number(txtinicio.value)
+    var fim = Number(txtfim.value)
+    var passo = Number(txtpasso.value)
 
     if(txtinicio.value.length == 0 || txtfim.value.length == 0 || txtpasso.value.length == 0){
         res.innerHTML = 'Impossível contar!'
     }else if(txtpasso.value == 0){
         window.alert('Passo inválido! Considerado PASSO 1')
 
+        passo = 1
         res.innerHTML = ''
 
-        passo = 1
-        
-        for(var c = inicio; c <= fim; c = c + passo){
-            res.innerHTML += c + '&#x1F449;'
+        for (var i = inicio; i <= fim; i = i + passo){
+            res.innerHTML += i + '&#x1F449;'
         }
+        
         res.innerHTML += '&#x1F3F3;&#xFE0F;'
     }else{
-
         res.innerHTML = ''
 
-        for(var cont = inicio; cont <= fim; cont = cont + passo){
-            res.innerHTML += cont + '&#x1F449;'
+        for (var i = inicio; i <= fim; i = i + passo){
+            res.innerHTML += i + '&#x1F449;'
         }
+        
         res.innerHTML += '&#x1F3F3;&#xFE0F;'
     }
 }
