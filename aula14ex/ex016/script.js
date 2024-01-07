@@ -4,13 +4,14 @@ function contar(){
     var txtpasso = window.document.querySelector('input#txtpasso')
     var res = window.document.querySelector('div#res')
 
-    var inicio = Number(txtinicio.value)
-    var fim = Number(txtfim.value)
-    var passo = Number(txtpasso.value)
 
     if(txtinicio.value.length == 0 || txtfim.value.length == 0 || txtpasso.value.length == 0){
         res.innerHTML = 'Impossível contar!'
     }else{
+        var inicio = Number(txtinicio.value)
+        var fim = Number(txtfim.value)
+        var passo = Number(txtpasso.value)
+        
         res.innerHTML = ''
         
         if(passo == 0){
