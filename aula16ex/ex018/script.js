@@ -38,7 +38,7 @@ function finalizar(){
         analise.innerHTML += `<p>Ao todo, temos ${A.length} números cadastrados.</p>`
 
         var soma = 0
-        var maior_num = 0
+        var maior_num = A[0]
         var menor_num = A[0]
 
         for(var i in A){
