@@ -3,9 +3,8 @@ var tab = document.querySelector('select#seltab')
 var analise = document.querySelector('div#ans')
 tab.innerHTML= ' '
 
-function inserir_elemento(A, tab){
+function inserir_elemento(){
     var txtnum = document.querySelector('input#txtnum')
-    analise.innerHTML = ''
     
     if (txtnum.value.length == 0 || (Number(txtnum.value < 0) || Number(txtnum.value > 100)) || valor_repetido(A, Number(txtnum.value)) == false){
         window.alert('Valor inválido ou já encontrado na lista!')
@@ -19,7 +18,10 @@ function inserir_elemento(A, tab){
 
             item.text= `Valor ${txtnum.value} adicionado`
             tab.appendChild(item)
+            analise.innerHTML = ''
         }
+       txtnum.value = ''
+       txtnum.focus()
     }
 }
 
@@ -31,30 +33,34 @@ function valor_repetido(A, valor){
     }
 }
 
-function finalizar(A, analise){
-    analise.innerHTML += `<br> Ao todo, temos ${A.length} números cadastrados. <br>`
+function finalizar(){
+    if(A.length != 0){
+        analise.innerHTML += `<p>Ao todo, temos ${A.length} números cadastrados.</p>`
 
-    var soma = 0
-    var maior_num = 0
-    var menor_num = A[0]
+        var soma = 0
+        var maior_num = 0
+        var menor_num = A[0]
 
-    for(var i in A){
-        soma += A[i]
+        for(var i in A){
+            soma += A[i]
 
-        if(maior_num < A[i]){
-            maior_num = A[i]
+            if(maior_num < A[i]){
+                maior_num = A[i]
+            }
+
+            if(menor_num > A[i]){
+                menor_num = A[i]
+            }
         }
 
-        if(menor_num > A[i]){
-            menor_num = A[i]
-        }
+        analise.innerHTML += `<p>O maior valor informado foi ${maior_num}.</p>`
+
+        analise.innerHTML += `<p>O menor valor informado foi ${menor_num}.</p>`
+
+        analise.innerHTML += `<p>Somando todos os valores, temos ${soma}.</p>`
+
+        analise.innerHTML += `<p>A média de todos os valores digitados é ${soma/A.length}.</p>`
+    }else{
+        window.alert('Por favor, insira pelo menos um número.')
     }
-
-    analise.innerHTML += `O maior valor informado foi ${maior_num}. <br>`
-
-    analise.innerHTML += `O menor valor informado foi ${menor_num}. <br>`
-
-    analise.innerHTML += `Somando todos os valores, temos ${soma}. <br>`
-
-    analise.innerHTML += `A média de todos os valores digitados é ${soma/A.length}. <br>`
 }
