@@ -1,9 +1,11 @@
 var A = []
 var tab = document.querySelector('select#seltab')
+var analise = document.querySelector('div#ans')
 tab.innerHTML= ' '
 
 function inserir_elemento(A, tab){
     var txtnum = document.querySelector('input#txtnum')
+    analise.innerHTML = ''
     
     if (txtnum.value.length == 0 || (Number(txtnum.value < 0) || Number(txtnum.value > 100)) || valor_repetido(A, Number(txtnum.value)) == false){
         window.alert('Valor inválido ou já encontrado na lista!')
@@ -29,12 +31,9 @@ function valor_repetido(A, valor){
     }
 }
 
-function finalizar(A){
-    var analise = document.querySelector('div#res')
-
+function finalizar(A, analise){
     analise.innerHTML += `<br> Ao todo, temos ${A.length} números cadastrados. <br>`
 
-    
     var soma = 0
     var maior_num = 0
     var menor_num = A[0]
@@ -46,15 +45,14 @@ function finalizar(A){
             maior_num = A[i]
         }
 
-        if(menor_num < A[i]){
+        if(menor_num > A[i]){
             menor_num = A[i]
         }
     }
 
     analise.innerHTML += `O maior valor informado foi ${maior_num}. <br>`
 
-    analise.innerHTML += `O menor valor informado foi ${A[0]}. <br>`
-
+    analise.innerHTML += `O menor valor informado foi ${menor_num}. <br>`
 
     analise.innerHTML += `Somando todos os valores, temos ${soma}. <br>`
 
