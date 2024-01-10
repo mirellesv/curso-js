@@ -1,1 +1,3 @@
 Repositório com todos os códigos feitos durante a realização do curso de JavaScript.
+
+A pasta 'curso-em-video' contém os códigos feitos durante a realização do curso do canal Curso em Vídeo. Nele, foram abordados conceitos introdutórios a linguagem (Variáveis e Tipos Primitivos, Tratamento de Dados, Operadores, DOM, condições, repetições, variáveis compostas e funções) voltados para o desenvolvimento web.
