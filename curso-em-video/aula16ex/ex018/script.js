@@ -20,9 +20,9 @@ function inserir_elemento(){
             tab.appendChild(item)
             analise.innerHTML = ''
         }
-       txtnum.value = ''
-       txtnum.focus()
     }
+    txtnum.value = ''
+    txtnum.focus()
 }
 
 function valor_repetido(A, valor){
