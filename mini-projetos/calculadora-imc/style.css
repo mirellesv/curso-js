@@ -1,0 +1,16 @@
+div#calculadora{
+    text-align: center;
+    background: #FF8C42;
+    height: 200px;
+    width: 400px;
+    border-radius: 10px;
+}
+
+/* body{
+    color: #44404f;
+} */
+
+div#resposta{
+    background: #44404f;
+    color: white;
+}
