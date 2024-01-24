@@ -10,7 +10,7 @@ Exemplo de execução de um dos projetos que fiz durante o meu aprendizado de Ja
 
 https://github.com/mirellesv/curso-js/assets/121313685/45859028-ea0e-4f10-9bac-072cf3f35d8f
 
-Após a execução do vídeo acima, foi feita uma **alteração**: os dois botões de ligar e desligar foram substutídos por apenas um único botão.
+Após a execução do vídeo acima, foi feita uma **alteração**: os dois botões de ligar e desligar foram substituídos por apenas um único botão.
 
 ## Exemplo de execução da segunda versão:
 
