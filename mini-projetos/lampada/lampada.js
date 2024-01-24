@@ -1,22 +1,32 @@
 const img = document.getElementById('img')
-const botao_l = document.getElementById('lig')
-const botao_d = document.getElementById('des')
+const botao = document.getElementById('lig')
 
 img.addEventListener("mouseover", ligar)
 img.addEventListener("mouseout", desligar)
 img.addEventListener("dblclick", quebrar)
-botao_l.addEventListener("click", ligar)
-botao_d.addEventListener("click", desligar)
+botao.addEventListener("click", trocar_botao)
 
 function ligar(){
     if(estaQuebrada() == false){
         img.setAttribute('src', 'imagens/ligada.jpg')
-    }   
+    }
 }
 
 function desligar(){
     if(estaQuebrada() == false){
         img.setAttribute('src', 'imagens/desligada.jpg')
+    }
+}
+
+function trocar_botao(){
+    if(estaQuebrada() == false){
+        if(botao.value == 'Ligar'){
+            botao.value = 'Desligar'
+            ligar()
+        }else if(botao.value == 'Desligar'){
+            botao.value = 'Ligar'
+            desligar()
+        }
     }
 }
 
