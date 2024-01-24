@@ -5,18 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lâmpada</title>
     <style>
-         main {
-            margin: auto;
+         h1#cabecalho {
+            text-transform: capitalize;
+            color: #d1c596;
+         }
+
+         header, main{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+         }
+
+         #lig, #des{
+            width: 80px;
          }
     </style>
 </head>
 <body>
+    <header>
+        <h1 id="cabecalho">Vanilla JS</h1>
+    </header>
+
     <main>
-        <h1 style="text-transform: capitalize;">Vanilla JS</h1>
-        <img id="img" src="imagens/desligada.jpg" alt="Imagem de uma lâmpada">
-        <br>
-        <input id="lig" type="button" value="Ligar">
-        <input id="des" type="button" value="Desligar">
+        <div>
+            <img id="img" src="imagens/desligada.jpg" alt="Imagem de uma lâmpada">
+        </div>
+        <div>
+            <input id="lig" type="button" value="Ligar">
+            <input id="des" type="button" value="Desligar">
+        </div>
     </main>
 
     <script src="lampada.js"></script>
