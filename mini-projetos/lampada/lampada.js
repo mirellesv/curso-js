@@ -9,18 +9,25 @@ botao_l.addEventListener("click", ligar)
 botao_d.addEventListener("click", desligar)
 
 function ligar(){
-    // if(img.hasAttribute('src', 'imagens/quebrada.jpg')){
-    //     img.setAttribute('src', 'imagens/quebrada.jpg')
-    // }else{
-    //     img.setAttribute('src', 'imagens/ligada.jpg')
-    // }
-    img.setAttribute('src', 'imagens/ligada.jpg')
+    if(estaQuebrada() == false){
+        img.setAttribute('src', 'imagens/ligada.jpg')
+    }   
 }
 
 function desligar(){
-    img.setAttribute('src', 'imagens/desligada.jpg')
+    if(estaQuebrada() == false){
+        img.setAttribute('src', 'imagens/desligada.jpg')
+    }
 }
 
 function quebrar(){
     img.setAttribute('src', 'imagens/quebrada.jpg')
+}
+
+function estaQuebrada(){
+    if(img.getAttribute("src") == 'imagens/quebrada.jpg'){
+        return true
+    }else{
+        return false
+    }
 }
