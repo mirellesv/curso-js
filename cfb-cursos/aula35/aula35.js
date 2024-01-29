@@ -23,7 +23,6 @@ const caixa1 = document.querySelector("#caixaesq")
 const caixa2 = document.querySelector('#caixadir')
 const botao = document.getElementById('botao')
 const cursos = [...document.querySelectorAll('.curso')]
-var cursosNaoSelecionados = []
 
 cursos.map((elemento) => {
     elemento.addEventListener('click', (evt) => {
@@ -34,6 +33,7 @@ cursos.map((elemento) => {
 
 botao.addEventListener('click', () => {
     const cursosSelecionados = [...document.querySelectorAll('.destaque')]
+    const cursosNaoSelecionados = []
     
     cursosSelecionados.map((elemento) => {
         caixa2.appendChild(elemento)
@@ -45,7 +45,5 @@ botao.addEventListener('click', () => {
             caixa1.appendChild(elemento)
         }
     })
+
 })
-
-
-console.log('Cursos não selecionados: ' + cursosNaoSelecionados)
