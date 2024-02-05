@@ -1,0 +1,46 @@
+:root {
+    --cor1: #6899D9;
+    --cor2: #616B78;
+    --cor3: #2E3640;
+    --cor4: #1B2533;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.caixa {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 2px 1px 8px rgba(0, 0, 0, 0.37);
+    align-items: center;
+    background-color: var(--cor1);
+}
+
+.cursos {
+    display: flex;
+    justify-content: space-around;
+    width: 150px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 2px 1px 8px rgba(0, 0, 0, 0.37);
+    background-color: var(--cor4);
+    text-align: center;
+    color: var(--cor2);
+    font-weight: bold;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.imagens {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
