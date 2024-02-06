@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+}
+
+:root {
+    --cor1: #B4D4EE;
+    --cor2: #A7ABDD;
+    --cor3: #9993B2;
+    --cor4: #9D8CA1;
+    --cor5: #81717A;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    column-gap: 30px;
+}
+
+div#menu, div#caixa-cursos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.4);
+    background-color:var(--cor1);
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+p#desc-caixa-texto {
+    text-align: center;
+}
+
+input#caixa-texto {
+    width: 150px;
+    border-radius: 5px;
+    border: 0px;
+}
+
+.botoes {
+    width: 160px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: var(--cor4);
+}
+
+.cursos {
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+    padding: 3px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color:var(--cor2);
+}
