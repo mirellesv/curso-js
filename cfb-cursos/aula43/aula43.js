@@ -22,9 +22,13 @@ cursos.map((elemento, indice) => {
 const marcar = [...document.querySelectorAll('input[name="cursos"]')]
 
 botao_selecionar.addEventListener('click', () => {
-    marcar.filter((elemento) => {
-        if(elemento.checked == true){
-            window.alert(elemento.parentNode.textContent + ' foi selecionado!')
-        }
+    let texto_selecionado = marcar.filter((elemento) => {   
+        return elemento.checked
     })
+
+    texto_selecionado = texto_selecionado[0] // Garantia de que estamos trabalhando com o elemento e não com o array!
+
+    texto_selecionado = texto_selecionado.parentNode.textContent
+
+    window.alert(`${texto_selecionado} foi selecionado!`)
 })
