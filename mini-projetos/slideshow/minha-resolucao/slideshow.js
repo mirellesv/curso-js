@@ -29,16 +29,37 @@ const itens_imagens = document.querySelectorAll('.itens')
 const itens_imagens_Arr = Array.from(itens_imagens)
 
 function voltar() {
-    window.alert('Voltou!')
+    let indice = 1
+
+    while(indice < 6){
+        volta_imagens( imagens, indice )
+
+        indice++
+    }
+
+    atualiza_imagens( imagens, itens_imagens_Arr )
+}
+
+function volta_imagens ( imagens, indice ){
+    [imagens[indice - 1], imagens[indice]] = [imagens[indice], imagens[indice - 1]]
 }
 
 function avancar() {
-    auxiliar = imagens[0]
-    imagens[0] = imagens[1]
-    imagens[1] = auxiliar
-    console.log(imagens);
+    let indice = 0
+
+    while(indice < 5){
+        avanca_imagens( imagens, indice)
+
+        console.log(imagens)
+
+        indice++
+    }
+    
     atualiza_imagens(imagens, itens_imagens_Arr)
-    window.alert('Trocou!')
+}
+
+function avanca_imagens ( imagens, indice ){
+    [imagens[indice], imagens[indice + 1]] = [imagens[indice + 1], imagens[indice]]
 }
 
 function atualiza_imagens ( imagens, itens_imagens_Arr ){

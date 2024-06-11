@@ -39,9 +39,11 @@ div#container-img {
     height: 400px;
     display: flex;
     /* overflow: hidden; */
+    
 }
 
 .imagens {
     width: 500px;
     height: 400px;
+    transition: display 1s allow-discrete;
 }
