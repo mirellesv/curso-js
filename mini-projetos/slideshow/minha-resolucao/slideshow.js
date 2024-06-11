@@ -9,7 +9,7 @@ const imagens = [
 const container_img = document.querySelector('#container-img')
 const botao_voltar = document.querySelector('#seta-esq')
 const botao_avancar = document.querySelector('#seta-dir')
-let indice = 0 // Variável que analisa a ordem das imagens
+let auxiliar // Variável que irá ajudar na troca das imagens
 
 const carregar_imagens = ( imagens ) => {
     imagens.forEach((elemento) => {
@@ -26,21 +26,27 @@ carregar_imagens ( imagens );
 botao_voltar.addEventListener("click", voltar)
 botao_avancar.addEventListener("click", avancar)
 const itens_imagens = document.querySelectorAll('.itens')
+const itens_imagens_Arr = Array.from(itens_imagens)
 
 function voltar() {
     window.alert('Voltou!')
 }
 
 function avancar() {
+    auxiliar = imagens[0]
     imagens[0] = imagens[1]
+    imagens[1] = auxiliar
     console.log(imagens);
-    atualiza_imagens();
+    atualiza_imagens(imagens, itens_imagens_Arr)
     window.alert('Trocou!')
 }
 
-function atualiza_imagens (){
-    imagens.forEach((elemento) => {
-        itens_imagens[indice].innerHTML = `<img src='${elemento.url}' class="imagens">`
+function atualiza_imagens ( imagens, itens_imagens_Arr ){
+    let indice = 0
+    itens_imagens_Arr.forEach( () => {
+        itens_imagens_Arr[indice].innerHTML = `<img src='${imagens[indice].url}' class='imagens'>`
         indice = indice + 1
     })
 }
+
+console.log(itens_imagens_Arr)
