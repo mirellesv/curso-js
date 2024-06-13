@@ -28,6 +28,7 @@ div#seta-esq:hover, div#seta-dir:hover {
     color: white;
     font-weight: bold;
     cursor: pointer;
+    transition: all 1s;
 }
 
 div#seta-dir {
@@ -44,4 +45,5 @@ div#container-img {
 .imagens {
     width: 500px;
     height: 400px;
+    transition: all 1s;
 }
