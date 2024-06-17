@@ -1,6 +1,6 @@
 # Projeto do Slideshow
 Exemplo de execução de um dos projetos que fiz durante o meu aprendizado de JavaScript, HTML e CSS.
-* Este projeto trata-se de um slideshow, onde o usuário pode navegar pelas imagens através de duas setas %28avançar e regressar%29. Além disso, as imagens são carregadas dinamicamente.
+* Este projeto trata-se de um slideshow, onde o usuário pode navegar pelas imagens carregadas dinamicamente através das setas de avançar e regressar.
 
 **Créditos**: Fiz este projeto de acordo com o enunciado proposto pelo professor [Fernando Leonid](https://youtu.be/csNYVAS2ex8?si=yaPzUx65NoA-aIHy)
 
