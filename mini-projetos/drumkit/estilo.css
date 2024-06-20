@@ -1,5 +1,6 @@
 :root {
     --amarelo: #F2AE2E;
+    --amarelo_sombra: #946a1c;
     --branco: #fffafa;
 }
 
@@ -24,7 +25,7 @@ main > div#texto-dk > h1 {
     display: block;
     color: var(--amarelo);
     font-size: 6em;
-    text-shadow: 2px 2px #946a1c;
+    text-shadow: 2px 2px var(--amarelo_sombra);
     margin: auto;
     user-select: none;
 }
@@ -34,6 +35,7 @@ div#container-teclas {
     flex-wrap: wrap;
     flex-direction: row;
     gap: 50px;
+    margin-top: 50px;
 }
 
 .letras {
@@ -51,7 +53,10 @@ div#container-teclas {
 }
 
 .letras:hover {
-    transform: scale(1.1)
+    /* transform: scale(1.1); Para fazer a tecla crescer*/
+    border: 1px solid var(--amarelo);
+    background-color: rgba(0, 0, 0, 0.716);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.582);;
 }
 
 div.letras > p {
