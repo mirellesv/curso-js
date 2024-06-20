@@ -26,20 +26,27 @@ const criar_teclas = () => {
 
 criar_teclas()
 
-function tocar_som(evt){
-    // Encontrando o som associado a tecla pressionada
-    const tecla_pressionada = evt.target.outerText
-    const indice_associado = teclas.indexOf(tecla_pressionada)
-    if(Number(teclas.indexOf(tecla_pressionada)) !== -1){ // Garantia de que o som somente irá tocar quando uma tecla for pressionada (e não quando outro lugar na div_container for clicado)
+function tocar_som(tecla_escolhida){
+    // Encontrando o som associado a tecla escolhida
+    const indice_associado = teclas.indexOf(tecla_escolhida)
+    if(Number(teclas.indexOf(tecla_escolhida)) !== -1){ // Garantia de que o som somente irá tocar quando uma tecla for escolhida (e não quando outro lugar na div_container for clicado)
         const som_escolhido = new Audio(`./sounds/${sons[indice_associado].som}`)
 
         som_escolhido.play()
     }
 }
 
-function tecla_teclado(evt){
-    console.log(evt.key.toUpperCase())
+function tocar_som_click(evt){
+    const tecla_pressionada = evt.target.outerText
+   
+    tocar_som(tecla_pressionada)
 }
 
-container_teclas.addEventListener('click', tocar_som)
-window.addEventListener('keydown', tecla_teclado)
+function tocar_som_teclado(evt){
+    const tecla_digitada = evt.key.toUpperCase()
+    
+    tocar_som(tecla_digitada)
+}
+
+container_teclas.addEventListener('click', tocar_som_click)
+window.addEventListener('keydown', tocar_som_teclado)
