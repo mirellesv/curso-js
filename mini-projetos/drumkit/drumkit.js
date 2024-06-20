@@ -1,16 +1,16 @@
 const container_teclas = document.querySelector('#container-teclas')
 const sons = [
-    {id: "1", som: "boom.wav"},
-    {id: "2", som: "clap.wav"},
-    {id: "3", som: "hihat.wav"},
-    {id: "4", som: "kick.wav"},
-    {id: "5", som: "openhat.wav"},
-    {id: "6", som: "ride.wav"},
-    {id: "7", som: "snare.wav"},
-    {id: "8", som: "tink.wav"},
-    {id: "9", som: "tom.wav"},
+    {id: "0", som: "boom.wav"},
+    {id: "1", som: "clap.wav"},
+    {id: "2", som: "hihat.wav"},
+    {id: "3", som: "kick.wav"},
+    {id: "4", som: "openhat.wav"},
+    {id: "5", som: "ride.wav"},
+    {id: "6", som: "snare.wav"},
+    {id: "7", som: "tink.wav"},
+    {id: "8", som: "tom.wav"},
 ]
-const teclas = ["A", "S", "D", "F", "G", "H", "I", "J", "K", "L"]
+const teclas = ["A", "S", "D", "F", "G", "H", "J", "K", "L"]
 
 const criar_teclas = () => {
     teclas.forEach((tecla) => {
@@ -27,10 +27,19 @@ const criar_teclas = () => {
 criar_teclas()
 
 function tocar_som(evt){
+    // Encontrando o som associado a tecla pressionada
     const tecla_pressionada = evt.target.outerText
     const indice_associado = teclas.indexOf(tecla_pressionada)
+    if(Number(teclas.indexOf(tecla_pressionada)) !== -1){ // Garantia de que o som somente irá tocar quando uma tecla for pressionada (e não quando outro lugar na div_container for clicado)
+        const som_escolhido = new Audio(`./sounds/${sons[indice_associado].som}`)
 
-    // sons[indice_associado].som.play()
+        som_escolhido.play()
+    }
+}
+
+function tecla_teclado(evt){
+    console.log(evt.key.toUpperCase())
 }
 
 container_teclas.addEventListener('click', tocar_som)
+window.addEventListener('keydown', tecla_teclado)

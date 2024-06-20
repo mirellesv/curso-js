@@ -59,6 +59,10 @@ div#container-teclas {
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.582);;
 }
 
+.letras .click {
+    transform: scale(1.1);
+}
+
 div.letras > p {
     line-height: 1.7;
     display: inline-block;
