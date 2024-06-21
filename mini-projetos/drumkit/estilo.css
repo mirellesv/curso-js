@@ -53,14 +53,15 @@ div#container-teclas {
 }
 
 .letras:hover {
-    /* transform: scale(1.1); Para fazer a tecla crescer*/
     border: 1px solid var(--amarelo);
     background-color: rgba(0, 0, 0, 0.716);
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.582);;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.582);
 }
 
-.letras .click {
-    transform: scale(1.1);
+.click {
+    transform: scale(1.3);
+    border: 2px solid var(--amarelo);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.582);
 }
 
 div.letras > p {
