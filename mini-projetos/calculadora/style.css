@@ -1,0 +1,38 @@
+/* Paleta de cores:
+#6B4E71 (Roxo)
+#3A4454 (Preto)
+#F5E5FC (Rosa claro)
+#8AE1FC (Azul claro)
+#48B8D0 (Azul marinho) */
+
+div#calculadora {
+    background-color: black;
+    width: 460px;
+    height: 400px;
+    padding: 10px;
+}
+
+div#visor {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: white;
+    color: black;
+    font-weight: bold; 
+    height: 50px;
+    margin-bottom: 10px;
+    margin-top: -5px;
+    padding: 5px;
+}
+
+div#teclas {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+button {
+    width: 100px;
+    height: 60px;
+    margin-bottom: 0.5rem;
+}
