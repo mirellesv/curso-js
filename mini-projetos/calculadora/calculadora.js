@@ -1,7 +1,7 @@
 const visor = document.getElementById("texto-visor")
 const botoes = document.querySelectorAll(".botao")
 let operador1 = 0, operador2 = 0, operacao = "", resultado = 0
-let cliques = 0
+let cliques = 0, calculou = false
 
 botoes.forEach((botao) => {
     botao.addEventListener('click', clicou_botao)
@@ -14,6 +14,13 @@ function clicou_botao(e){
     console.log(texto)
 
     let operador_unario = texto == "CE" || texto == "C" || texto == "A" || texto == "±" || texto == "," ? true : false
+
+    // Apaga o visor sempre que for feita uma conta
+    if(calculou == true){
+        visor.innerHTML = ``
+        calculou = false
+        cliques = 0
+    }
 
     if (operador_unario == false){
         if(!isNaN(texto) && (cliques == 0 || cliques == 1)){
@@ -72,6 +79,7 @@ function clicou_botao(e){
                 }
 
                 visor.innerHTML = `${resultado}`
+                calculou = true
             }
         }
     }else{
@@ -97,6 +105,7 @@ function clicou_botao(e){
                 visor.innerHTML = ``
                 operador1 = 0
                 operador2 = 0
+                cliques = 0
                 break
             case '±':
                 if(operador1 != 0){
