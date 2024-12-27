@@ -11,8 +11,6 @@ function clicou_botao(e){
     // É extraído da string, a substring que caracteriza o botão
     const texto = e.srcElement.id.substring(5)
 
-    console.log(texto)
-
     let operador_unario = texto == "CE" || texto == "C" || texto == "A" || texto == "±" || texto == "," ? true : false
 
     // Apaga o visor sempre que for feita uma conta
@@ -70,7 +68,6 @@ function clicou_botao(e){
                 }
     
                 let texto_resultado = resultado.toString()
-                console.log(texto_resultado)
 
                 // O número terá como separador decimal a ","
                 if(texto_resultado.includes(".")){
@@ -80,13 +77,15 @@ function clicou_botao(e){
 
                 visor.innerHTML = `${resultado}`
                 calculou = true
+                operador1 = 0
+                operador2 = 0
             }
         }
     }else{
         switch(texto){
             case 'CE':
-                if(operador1 != 0){
-                    if(operador2 != 0){
+                if(operador1 !== 0){
+                    if(operador2 !== 0){
                         operador2 = 0
                         visor.innerHTML = visor.innerHTML.replace(visor.innerHTML.split(" ")[2], "")
                     }else{
@@ -108,24 +107,23 @@ function clicou_botao(e){
                 cliques = 0
                 break
             case '±':
-                if(operador1 != 0){
-                    if(operador2 != 0){
+                if(operador1 !== 0 && visor.innerHTML.length !== 0){
+                    if(operador2 !== 0){
                         operador2 = operador2 * (-1)
-                        visor.innerHTML = visor.innerHTML.split(" ")[0] + visor.innerHTML.split(" ")[1] + " (-" + visor.innerHTML.split(" ")[2] + ")"
+                        if(operador2 < 0){
+                            visor.innerHTML = visor.innerHTML.split(" ")[0] + visor.innerHTML.split(" ")[1] + " (-" + visor.innerHTML.split(" ")[2] + ")"
+                        }
                     }else{
                         operador1 = operador1 * (-1)
-                        visor.innerHTML = "-" + visor.innerHTML
-                    }
 
-                    console.log("Operador 1: ", operador1)
-                    console.log("Operador 2: ", operador2 )
+                        console.log(operador1)
+
+                        visor.innerHTML = Math.sign(operador1) === -1 ? visor.innerHTML = "-" + visor.innerHTML : visor.innerHTML = `${operador1}`
+                    }
                 }
                 break
             case ',':
                 visor.innerHTML = visor.innerHTML + ","
-
-                console.log("Operador 1", operador1)
-                console.log("Operador 2:", operador2)
                 break
             default:
                 resultado = 0
