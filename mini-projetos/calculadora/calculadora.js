@@ -26,8 +26,12 @@ function clicou_botao(e){
                 }
             }else if(cliques == 1){
                 // A string do visor é dividida em três e é obtido o segundo operador
-                const textoOperador2 = visor.innerHTML.split(" ")[2]
+                let textoOperador2 = visor.innerHTML.split(" ")[2]
                 operacao = visor.innerHTML.split(" ")[1]
+
+                if(textoOperador2.includes(",")){
+                    textoOperador2 = textoOperador2.replace(",", ".")
+                }
         
                 operador2 = Number(textoOperador2)
             }
@@ -58,6 +62,15 @@ function clicou_botao(e){
                         resultado = 0
                 }
     
+                let texto_resultado = resultado.toString()
+                console.log(texto_resultado)
+
+                // O número terá como separador decimal a ","
+                if(texto_resultado.includes(".")){
+                    texto_resultado = texto_resultado.replace(".", ",")
+                    resultado = texto_resultado
+                }
+
                 visor.innerHTML = `${resultado}`
             }
         }
