@@ -5,24 +5,43 @@
 #8AE1FC (Azul claro)
 #48B8D0 (Azul marinho) */
 
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 div#calculadora {
-    background-color: black;
+    background-color: #43C59E;
     width: 460px;
-    height: 400px;
+    height: 410px;
     padding: 10px;
+    border-radius: 10px;
+    border-style: solid;
 }
 
 div#visor {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    align-items: center;
     background-color: white;
     color: black;
     font-weight: bold; 
     height: 50px;
     margin-bottom: 10px;
-    margin-top: -5px;
+    margin-top: -2px;
     padding: 5px;
+    border-radius: 5px;
+    border-style: solid;
 }
 
 div#teclas {
@@ -35,4 +54,19 @@ button {
     width: 100px;
     height: 60px;
     margin-bottom: 0.5rem;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: whitesmoke;
+    transition: 0.2s;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.332);
+}
+
+button:active {
+    background-color: rgb(231, 231, 231);
+    color: rgba(0, 0, 0, 0.623);
 }

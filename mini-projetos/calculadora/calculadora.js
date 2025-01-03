@@ -22,27 +22,36 @@ function clicou_botao(e){
 
     if (operador_unario == false){
         if(!isNaN(texto) && (cliques == 0 || cliques == 1)){
-            visor.innerHTML += `${texto}`
             if(cliques == 0){
+                if(visor.innerHTML.charAt(0) !== '0'){
+                    visor.innerHTML += `${texto}`
+                }else{
+                    visor.innerHTML = texto
+                }
+
                 if(visor.innerHTML.includes(",")){
                     operador1 = Number(visor.innerHTML.replace(",", "."))
                 }else{
                     operador1 = Number(visor.innerHTML)
                 }
+                
             }else if(cliques == 1){
                 // A string do visor é dividida em três e é obtido o segundo operador
+                if(visor.innerHTML.charAt(0) !== '0'){
+                    visor.innerHTML += `${texto}`
+                }else{
+                    visor.innerHTML = texto
+                }
+
                 let textoOperador2 = visor.innerHTML.split(" ")[2]
                 operacao = visor.innerHTML.split(" ")[1]
 
                 if(textoOperador2.includes(",")){
                     textoOperador2 = textoOperador2.replace(",", ".")
                 }
-        
+
                 operador2 = Number(textoOperador2)
             }
-            
-            console.log("Operador 1: ", operador1)
-            console.log("Operador 2: ", operador2)
         }else {
             // A calculadora realiza operações de 2 em 2
             cliques++ 
@@ -66,16 +75,21 @@ function clicou_botao(e){
                     default:
                         resultado = 0
                 }
-    
-                let texto_resultado = resultado.toString()
 
-                // O número terá como separador decimal a ","
-                if(texto_resultado.includes(".")){
-                    texto_resultado = texto_resultado.replace(".", ",")
-                    resultado = texto_resultado
+                if(isFinite(resultado)){
+                    let texto_resultado = resultado.toString()
+
+                    // O número terá como separador decimal a ","
+                    if(texto_resultado.includes(".")){
+                        texto_resultado = texto_resultado.replace(".", ",")
+                        resultado = texto_resultado
+                    }
+
+                    visor.innerHTML = `${resultado}`
+                }else{
+                    visor.innerHTML = `Resultado inválido!`
                 }
-
-                visor.innerHTML = `${resultado}`
+                
                 calculou = true
                 operador1 = 0
                 operador2 = 0
@@ -115,8 +129,6 @@ function clicou_botao(e){
                         }
                     }else{
                         operador1 = operador1 * (-1)
-
-                        console.log(operador1)
 
                         visor.innerHTML = Math.sign(operador1) === -1 ? visor.innerHTML = "-" + visor.innerHTML : visor.innerHTML = `${operador1}`
                     }
