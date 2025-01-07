@@ -3,6 +3,11 @@ const botoes = document.querySelectorAll(".botao")
 let operador1 = 0, operador2 = 0, operacao = "", resultado = 0
 let cliques = 0, calculou = false
 
+// Proibir a inserção de mais de dois operandos
+// Se o usuário inserir dois operadores, o último operador irá substituir o primeiro inserido
+// Permitir que o 0 seja o primeiro operador (0 + 5 = 5)
+// Permitir que o usuário consiga utilizar o resultado da operação como operando para a próxima
+
 botoes.forEach((botao) => {
     botao.addEventListener('click', clicou_botao)
 })
@@ -15,7 +20,7 @@ function clicou_botao(e){
 
     // Apaga o visor sempre que for feita uma conta
     if(calculou == true){
-        visor.innerHTML = ``
+        visor.innerHTML = `${operador1}`
         calculou = false
         cliques = 0
     }
@@ -54,9 +59,9 @@ function clicou_botao(e){
             }
         }else {
             // A calculadora realiza operações de 2 em 2
-            cliques++ 
+            cliques++
     
-            if(texto != "="){
+            if(texto !== "=" && operador1 !== 0){
                 visor.innerHTML += ` ${texto} `
             }else{
                 switch(operacao){
@@ -91,8 +96,12 @@ function clicou_botao(e){
                 }
                 
                 calculou = true
-                operador1 = 0
+
+                operador1 = resultado
                 operador2 = 0
+
+                console.log("Operador 1:", operador1)
+                console.log("Operador 2:", operador2)
             }
         }
     }else{
