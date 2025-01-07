@@ -1,10 +1,10 @@
 const visor = document.getElementById("texto-visor")
 const botoes = document.querySelectorAll(".botao")
 let operador1 = null, operador2 = null, operacao = "", resultado = 0
-let cliques = 0, calculou = false
+let cliques = 0, calculou = false, operacao_ativada = false
 
-// Proibir a inserção de mais de dois operandos
-// Se o usuário inserir dois operadores, o último operador irá substituir o primeiro inserido
+// Proibir a inserção de mais de dois operandos (FEITO)
+// Se o usuário inserir dois operadores, o último operador irá substituir o primeiro inserido (FEITO)
 // Permitir que o 0 seja o primeiro operador (0 + 5 = 5) (FEITO)
 // Permitir que o usuário consiga utilizar o resultado da operação como operando para a próxima (FEITO)
 
@@ -40,7 +40,7 @@ function clicou_botao(e){
                     operador1 = Number(visor.innerHTML)
                 }
                 
-            }else if(cliques == 1){
+            }else if(cliques == 1 && texto !== operacao){
                 // A string do visor é dividida em três e é obtido o segundo operador
                 if(visor.innerHTML.split(" ")[2].charAt(0) !== '0'){
                     visor.innerHTML += `${texto}`
@@ -60,10 +60,14 @@ function clicou_botao(e){
         }else {
             // A calculadora realiza operações de 2 em 2
             cliques++
-    
+            console.log("Cliques: ", cliques)
             if(texto !== "="){
-                visor.innerHTML += ` ${texto} `
-            }else{
+                //  visor.innerHTML += `${texto} `
+
+                 visor.innerHTML = `${operador1} ${texto} `
+
+                 cliques = 1
+            }else{  
                 switch(operacao){
                     case '+':
                         resultado = operador1 + operador2
@@ -99,9 +103,6 @@ function clicou_botao(e){
 
                 operador1 = resultado
                 operador2 = 0
-
-                console.log("Operador 1:", operador1)
-                console.log("Operador 2:", operador2)
             }
         }
     }else{
