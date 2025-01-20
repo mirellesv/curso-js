@@ -1,12 +1,7 @@
 const visor = document.getElementById("texto-visor")
 const botoes = document.querySelectorAll(".botao")
 let operador1 = null, operador2 = null, operacao = "", resultado = 0
-let cliques = 0, calculou = false, operacao_ativada = false
-
-// Proibir a inserção de mais de dois operandos (FEITO)
-// Se o usuário inserir dois operadores, o último operador irá substituir o primeiro inserido (FEITO)
-// Permitir que o 0 seja o primeiro operador (0 + 5 = 5) (FEITO)
-// Permitir que o usuário consiga utilizar o resultado da operação como operando para a próxima (FEITO)
+let cliques = 0, calculou = false
 
 botoes.forEach((botao) => {
     botao.addEventListener('click', clicou_botao)
@@ -16,13 +11,21 @@ function clicou_botao(e){
     // É extraído da string, a substring que caracteriza o botão
     const texto = e.srcElement.id.substring(5)
 
+    console.log(operador1)
+    console.log(operador2)
+
     let operador_unario = texto == "CE" || texto == "C" || texto == "A" || texto == "±" || texto == "," ? true : false
 
     // Apaga o visor sempre que for feita uma conta
     if(calculou == true){
-        visor.innerHTML = `${operador1}`
         calculou = false
-        cliques = 0
+        cliques = 0;
+
+        if(texto !== operacao){
+            visor.innerHTML = ``
+        }else{
+            visor.innerHTML = `${operador1}`
+        }
     }
 
     if (operador_unario == false){
@@ -42,10 +45,15 @@ function clicou_botao(e){
                 
             }else if(cliques == 1 && texto !== operacao){
                 // A string do visor é dividida em três e é obtido o segundo operador
+                
                 if(visor.innerHTML.split(" ")[2].charAt(0) !== '0'){
                     visor.innerHTML += `${texto}`
                 }else{
+                    console.log(visor.innerHTML.split(" ")[1])
+
                     visor.innerHTML = `${visor.innerHTML.split(" ")[0]} ${visor.innerHTML.split(" ")[1]} ${texto}`
+
+                    
                 }
 
                 let textoOperador2 = visor.innerHTML.split(" ")[2]
@@ -55,15 +63,15 @@ function clicou_botao(e){
                     textoOperador2 = textoOperador2.replace(",", ".")
                 }
 
+                console.log(textoOperador2)
+
                 operador2 = Number(textoOperador2)
             }
         }else {
             // A calculadora realiza operações de 2 em 2
             cliques++
-            console.log("Cliques: ", cliques)
-            if(texto !== "="){
-                //  visor.innerHTML += `${texto} `
 
+            if(texto !== "="){
                  visor.innerHTML = `${operador1} ${texto} `
 
                  cliques = 1
@@ -87,20 +95,20 @@ function clicou_botao(e){
 
                 if(isFinite(resultado)){
                     let texto_resultado = resultado.toString()
-
+            
                     // O número terá como separador decimal a ","
                     if(texto_resultado.includes(".")){
                         texto_resultado = texto_resultado.replace(".", ",")
                         resultado = texto_resultado
                     }
-
+            
                     visor.innerHTML = `${resultado}`
                 }else{
+                    console.log(resultado)
                     visor.innerHTML = `Resultado inválido!`
                 }
-                
-                calculou = true
 
+                calculou = true
                 operador1 = resultado
                 operador2 = 0
             }
@@ -109,7 +117,7 @@ function clicou_botao(e){
         switch(texto){
             case 'CE':
                 if(operador1 !== 0){
-                    if(operador2 !== 0){
+                    if(operador2 !== null){
                         operador2 = 0
                         visor.innerHTML = visor.innerHTML.replace(visor.innerHTML.split(" ")[2], "")
                     }else{
@@ -131,8 +139,9 @@ function clicou_botao(e){
                 cliques = 0
                 break
             case '±':
+                console.log(visor.innerHTML.length)
                 if(operador1 !== 0 && visor.innerHTML.length !== 0){
-                    if(operador2 !== 0){
+                    if(operador2 !== null){
                         operador2 = operador2 * (-1)
                         if(operador2 < 0){
                             visor.innerHTML = visor.innerHTML.split(" ")[0] + visor.innerHTML.split(" ")[1] + " (-" + visor.innerHTML.split(" ")[2] + ")"
@@ -145,10 +154,16 @@ function clicou_botao(e){
                 }
                 break
             case ',':
-                visor.innerHTML = visor.innerHTML + ","
+                if(operador2 === null){
+                    if(operador1 !== null){
+                        visor.innerHTML = `${operador1},`
+                    }
+                }else {
+                    visor.innerHTML = `${operador1} ${operacao} ${operador2},`
+                }
                 break
             default:
                 resultado = 0
-        } 
+        }
     } 
 }
