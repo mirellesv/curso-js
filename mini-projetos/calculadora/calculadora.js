@@ -25,6 +25,8 @@ function apaga_visor(texto){
 function trata_decimal(textoOperador){
     let operador
 
+    textoOperador = textoOperador.toString(textoOperador)
+
     if(textoOperador.includes(",")){
         operador = Number(textoOperador.replace(",", "."))
     }else{
@@ -36,10 +38,6 @@ function trata_decimal(textoOperador){
 
 // Função que realiza as operações aritméticas (adição, subtração, multiplicação e divisão)
 function faz_operacao_aritmetica(){
-    // console.log('Operador 1: ', operador1)
-    // console.log(typeof(operador1))
-    // console.log('Operador 2: ', operador2)
-
     switch(operacao){
         case '+':
             resultado = operador1 + operador2
@@ -57,7 +55,8 @@ function faz_operacao_aritmetica(){
             resultado = 0
     }
 
-    console.log('Resultado: ', resultado)
+    resultado = resultado.toFixed(2)
+    
     return resultado
 }
 
@@ -149,7 +148,7 @@ function obtem_operador1(texto){
 
 function obtem_operador2(texto){
     // A string do visor é dividida em três e é obtido o segundo operador
-                
+
     if(visor.innerHTML.split(" ")[2].charAt(0) !== '0'){
         visor.innerHTML += `${texto}`
     }else{
@@ -164,11 +163,16 @@ function obtem_operador2(texto){
 
 function clicou_botao(e){
     // É extraído da string, a substring que caracteriza o botão
-    const texto = e.srcElement.id.substring(5)
+    let texto = e.srcElement.id.substring(5)
 
     let operador_unario = texto == "CE" || texto == "C" || texto == "A" || texto == "±" || texto == "," ? true : false
 
     apaga_visor(calculou, texto)
+
+    // Se o usuário apertar algum operador antes de digitar o operador 1, o valor do operador 1 será assumido como 0
+    if(['+', '-', '*', '/'].includes(texto) && !operador1){
+        operador1 = 0
+    }
 
     if (operador_unario == false){
         if(!isNaN(texto) && (cliques == 0 || cliques == 1)){
@@ -187,6 +191,8 @@ function clicou_botao(e){
                  cliques = 1
             }else{  
                 resultado = faz_operacao_aritmetica()
+                console.log('Operador 1: ', operador1)
+                console.log('Operador 2: ', operador2)
 
                 trata_resultado()
 
