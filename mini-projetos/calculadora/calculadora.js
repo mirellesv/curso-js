@@ -111,6 +111,20 @@ function faz_operacao_adicionar_virgula(){
         }
     }else {
         visor.innerHTML = `${operador1} ${operacao} ${operador2},`
+
+
+
+        operador2 = operador2.toString()
+
+        // if(operador2.includes(',')){
+        //     visor.innerHTML = `${operador1} ${operacao} ${operador2}`
+        //     console.log('Nao tem 0')
+        // }else {
+        //     visor.innerHTML = `${operador1} ${operacao} ${operador2},`
+        //     console.log('Tem 0')
+        // }
+
+        // console.log(typeof(operador2))
     }
 }
 
@@ -135,10 +149,16 @@ function trata_resultado(){
 }
 
 function obtem_operador1(texto){
+    // Se o usuário digitar o 0 e em seguida outro número, o 0 será descartado e operador 1 será o novo número digitado pelo usuário
     if(visor.innerHTML.charAt(0) !== '0'){
         visor.innerHTML += `${texto}`
     }else{
-        visor.innerHTML = texto
+        // Se o usuário digitar 0 e em seguida uma vírgula, o operador 1 será caracterizado como um número decimal (0,3, por exemplo)
+        if(visor.innerHTML.charAt(1) !== ','){
+            visor.innerHTML = texto
+        }else{
+            visor.innerHTML = `0,` + `${texto}`
+        }
     }
 
     textoOperador1 = visor.innerHTML
@@ -149,14 +169,21 @@ function obtem_operador1(texto){
 function obtem_operador2(texto){
     // A string do visor é dividida em três e é obtido o segundo operador
 
-    if(visor.innerHTML.split(" ")[2].charAt(0) !== '0'){
+    let textoOperador1 = visor.innerHTML.split(" ")[0]
+    operacao = visor.innerHTML.split(" ")[1]
+    let textoOperador2 = visor.innerHTML.split(" ")[2]
+
+    if(textoOperador2.includes('0,')){
         visor.innerHTML += `${texto}`
-    }else{
-        visor.innerHTML = `${visor.innerHTML.split(" ")[0]} ${visor.innerHTML.split(" ")[1]} ${texto}`
+    }else{      
+        if(textoOperador2.charAt(0) !== '0'){
+            visor.innerHTML += `${texto}`
+        }else{
+            visor.innerHTML = `${textoOperador1} ${operacao} ${texto}`
+        }   
     }
 
-    let textoOperador2 = visor.innerHTML.split(" ")[2]
-    operacao = visor.innerHTML.split(" ")[1]
+    textoOperador2 = visor.innerHTML.split(" ")[2]
 
     operador2 = trata_decimal(textoOperador2)
 }
