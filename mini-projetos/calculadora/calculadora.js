@@ -1,6 +1,6 @@
 const visor = document.getElementById("texto-visor")
 const botoes = document.querySelectorAll(".botao")
-let operador1 = null, operador2 = null, operacao = "", resultado = 0
+let operador1 = null, operador2 = null, operacao = "", resultado = 0, operacao_anterior = " "
 let cliques = 0, calculou = false
 
 botoes.forEach((botao) => {
@@ -107,24 +107,23 @@ function faz_operacao_inverter_sinal(){
 function faz_operacao_adicionar_virgula(){
     if(operador2 === null){
         if(operador1 !== null){
-            visor.innerHTML = `${operador1},`
+            if(operacao_anterior !== " "){
+                if(!operador1.toString().includes('.')){
+                    visor.innerHTML = `${operador1} ${operacao_anterior} 0,`
+                }                
+            }else{
+                if(!operador1.toString().includes('.')){
+                    visor.innerHTML = `${operador1},`
+                    
+                }
+            }
+        }else{
+            visor.innerHTML = `0,`
         }
     }else {
-        visor.innerHTML = `${operador1} ${operacao} ${operador2},`
-
-
-
-        operador2 = operador2.toString()
-
-        // if(operador2.includes(',')){
-        //     visor.innerHTML = `${operador1} ${operacao} ${operador2}`
-        //     console.log('Nao tem 0')
-        // }else {
-        //     visor.innerHTML = `${operador1} ${operacao} ${operador2},`
-        //     console.log('Tem 0')
-        // }
-
-        // console.log(typeof(operador2))
+        if(!operador2.toString().includes('.')){
+            visor.innerHTML = `${operador1} ${operacao_anterior} ${operador2},`
+        }
     }
 }
 
@@ -146,6 +145,8 @@ function trata_resultado(){
     }else{
         visor.innerHTML = `Resultado inválido!`
     }
+
+    operacao_anterior = " "
 }
 
 function obtem_operador1(texto){
@@ -199,6 +200,10 @@ function clicou_botao(e){
     // Se o usuário apertar algum operador antes de digitar o operador 1, o valor do operador 1 será assumido como 0
     if(['+', '-', '*', '/'].includes(texto) && !operador1){
         operador1 = 0
+    }
+
+    if(['+', '-', '*', '/'].includes(texto)){
+        operacao_anterior = texto
     }
 
     if (operador_unario == false){
