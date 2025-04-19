@@ -8,12 +8,12 @@ botoes.forEach((botao) => {
 })
 
 // Função que apaga o visor sempre que for feita uma conta
-function apaga_visor(texto){
+function apaga_visor(texto, operador_unario){
     if(calculou == true){
         calculou = false
         cliques = 0;
 
-        if(texto !== operacao){
+        if(texto !== operacao && operador_unario !== "±"){
             visor.innerHTML = ``
         }else{
             visor.innerHTML = `${operador1}`
@@ -90,7 +90,7 @@ function faz_operacao_c(){
 // Função que realiza a função de inverter o sinal de um operador na calculadora
 function faz_operacao_inverter_sinal(){
     if(operador1 !== 0 && visor.innerHTML.length !== 0){
-        if(operador2 !== null){
+        if(operador2 !== null && operador2 !== 0){
             operador2 = operador2 * (-1)
             if(operador2 < 0){
                 visor.innerHTML = visor.innerHTML.split(" ")[0] + visor.innerHTML.split(" ")[1] + " (-" + visor.innerHTML.split(" ")[2] + ")"
@@ -195,7 +195,7 @@ function clicou_botao(e){
 
     let operador_unario = texto == "CE" || texto == "C" || texto == "A" || texto == "±" || texto == "," ? true : false
 
-    apaga_visor(calculou, texto)
+    apaga_visor(calculou, texto, operador_unario)
 
     // Se o usuário apertar algum operador antes de digitar o operador 1, o valor do operador 1 será assumido como 0
     if(['+', '-', '*', '/'].includes(texto) && !operador1){
