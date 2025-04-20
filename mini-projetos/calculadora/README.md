@@ -44,5 +44,5 @@ https://github.com/user-attachments/assets/83bfa411-5a2f-4ce7-8906-c831b21430c9
 
 ## 🖼️ Interface
 
-- A interface simula uma calculadora comum com visor e botões numéricos e funcionais.  
+- A interface simula uma calculadora comum com visor e botões numéricos funcionais.  
 - O visor é atualizado conforme as interações com os botões.
