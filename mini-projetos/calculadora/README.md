@@ -4,12 +4,13 @@ Este é um projeto de **calculadora aritmética** desenvolvido com **JavaScript*
 
 ![Calculadora em funcionamento](assets/calculadora.png)
 
+**Créditos**: Fiz este projeto de acordo com o enunciado proposto pelo professor [Fernando Leonid](https://youtu.be/oRZQ5EZOrQk?si=ya4FT2Hkrosyt8l8).
+
 ## 🔧 Funcionalidades
 
 - Operações básicas: adição (`+`), subtração (`-`), multiplicação (`*`) e divisão (`/`)
-- CE: limpa o segundo operador digitado
+- CE e &lt;&lt;: limpam o último dígito digitado
 - C: limpa toda a operação
-- A: apaga o último dígito inserido
 - ±: inverte o sinal do número
 - Vírgula (`,`): adiciona separador decimal (suporte à notação brasileira)
 - Tratamento de resultados inválidos (ex: divisão por zero)
@@ -23,10 +24,7 @@ Este é um projeto de **calculadora aritmética** desenvolvido com **JavaScript*
 
 ## ▶️ Demonstração
 
-📹 *[Adicione aqui o link do vídeo demonstrativo]*  
-<!-- Exemplo:
-[![Vídeo de Demonstração](https://img.youtube.com/vi/SEU_VIDEO_ID/mqdefault.jpg)](https://youtu.be/SEU_VIDEO_ID)
--->
+https://github.com/user-attachments/assets/83bfa411-5a2f-4ce7-8906-c831b21430c9
 
 ## 🧠 Estrutura do Código
 
@@ -38,12 +36,11 @@ Este é um projeto de **calculadora aritmética** desenvolvido com **JavaScript*
   - `faz_operacao_ce()`, `faz_operacao_c()`, `faz_operacao_a()`
   - `faz_operacao_inverter_sinal()`
   - `faz_operacao_adicionar_virgula()`
+  - `obtem_operador()`
 
 ## 💡 Observações
 
 - A calculadora suporta operações encadeadas de dois em dois operandos.
-- O visor é limpo automaticamente após a exibição de um resultado, para facilitar novas operações.
-- A lógica também trata inserções indevidas e garante consistência visual e funcional.
 
 ## 🖼️ Interface
 
