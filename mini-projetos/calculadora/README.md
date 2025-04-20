@@ -44,11 +44,5 @@ https://github.com/user-attachments/assets/83bfa411-5a2f-4ce7-8906-c831b21430c9
 
 ## 🖼️ Interface
 
-A interface simula uma calculadora comum com visor e botões numéricos e funcionais.  
-O visor é atualizado conforme as interações com os botões.
-
-## 🚀 Como usar
-
-1. Clone este repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+- A interface simula uma calculadora comum com visor e botões numéricos e funcionais.  
+- O visor é atualizado conforme as interações com os botões.
