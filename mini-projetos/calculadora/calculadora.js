@@ -1,7 +1,7 @@
 const visor = document.getElementById("texto-visor")
 const botoes = document.querySelectorAll(".botao")
 let operador1 = null, operador2 = null, operacao = "", resultado = 0, operacao_anterior = " "
-let cliques = 0, calculou = false
+let cliques = 0, calculou = false, resultado_invalido = false
 
 botoes.forEach((botao) => {
     botao.addEventListener('click', clicou_botao)
@@ -114,7 +114,6 @@ function faz_operacao_adicionar_virgula(){
             }else{
                 if(!operador1.toString().includes('.')){
                     visor.innerHTML = `${operador1},`
-                    
                 }
             }
         }else{
@@ -122,7 +121,12 @@ function faz_operacao_adicionar_virgula(){
         }
     }else {
         if(!operador2.toString().includes('.')){
-            visor.innerHTML = `${operador1} ${operacao_anterior} ${operador2},`
+            if(resultado_invalido === false){
+                visor.innerHTML = `${operador1} ${operacao_anterior} ${operador2},`
+            }else{
+                visor.innerHTML = `${operador1},`
+            }
+            resultado_invalido = false
         }
     }
 }
@@ -144,9 +148,18 @@ function trata_resultado(){
         visor.innerHTML = `${resultado}`
     }else{
         visor.innerHTML = `Resultado inválido!`
+        resultado_invalido = true
     }
 
     operacao_anterior = " "
+}
+
+function obtem_operador(texto){
+    if(visor.innerHTML.split(" ").length === 1){
+        obtem_operador1(texto)
+    }else{
+        obtem_operador2(texto)
+    }
 }
 
 function obtem_operador1(texto){
@@ -162,14 +175,13 @@ function obtem_operador1(texto){
         }
     }
 
-    textoOperador1 = visor.innerHTML
+    let textoOperador1 = visor.innerHTML
 
     operador1 = trata_decimal(textoOperador1)
 }
 
 function obtem_operador2(texto){
     // A string do visor é dividida em três e é obtido o segundo operador
-
     let textoOperador1 = visor.innerHTML.split(" ")[0]
     operacao = visor.innerHTML.split(" ")[1]
     let textoOperador2 = visor.innerHTML.split(" ")[2]
@@ -209,9 +221,9 @@ function clicou_botao(e){
     if (operador_unario == false){
         if(!isNaN(texto) && (cliques == 0 || cliques == 1)){
             if(cliques == 0){
-                obtem_operador1(texto)
+                obtem_operador(texto)
             }else if(cliques == 1 && texto !== operacao){
-                obtem_operador2(texto)
+                obtem_operador(texto)
             }
         }else {
             // A calculadora realiza operações de 2 em 2
@@ -223,8 +235,6 @@ function clicou_botao(e){
                  cliques = 1
             }else{  
                 resultado = faz_operacao_aritmetica()
-                console.log('Operador 1: ', operador1)
-                console.log('Operador 2: ', operador2)
 
                 trata_resultado()
 
